@@ -1,0 +1,5 @@
+name = input("What is your name? ")
+partner = input("What is your partner's name?")
+months = input("How many months have you been coding?")
+partnermonths = input("How many months has your partner been coding?")
+print("I am " + name + " and my partners name is " + partner)  

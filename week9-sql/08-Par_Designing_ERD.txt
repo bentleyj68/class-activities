@@ -1,0 +1,34 @@
+Trainers
+-
+trainer_id PK
+trainer_first_name
+trainer_last_name
+
+
+Members
+-
+member_id PK
+memeber_first_name
+member_last_name
+
+
+
+Gym
+-
+gym_id PK
+address 
+phone
+email
+
+
+
+Equipment
+-
+equipment_id PK
+gym_id
+description
+model
+
+Classes
+-
+-

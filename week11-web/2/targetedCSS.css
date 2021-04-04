@@ -1,0 +1,25 @@
+/* h1 heading tag */
+h1
+{
+    color: blue;
+}
+
+.purpleclass
+{
+    color: purple;
+}
+
+#redid
+{
+    color: red;
+}
+
+.blackbg
+{
+    background-color: black;
+}
+
+#bigfont
+{
+    font-size: 40px;
+}

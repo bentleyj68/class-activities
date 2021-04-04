@@ -33,28 +33,38 @@ def welcome():
         f"Welcome to the Justice League API!<br/>"
         f"Available Routes:<br/>"
         f"/api/v1.0/justice-league<br/>"
-        f"/api/v1.0/justice-league/superhero/aquaman"
         f"/api/v1.0/justice-league/superhero/batman"
-        f"/api/v1.0/justice-league/superhero/cyborg"
-        f"/api/v1.0/justice-league/superhero/flash"
-        f"/api/v1.0/justice-league/superhero/green%20lantern"
-        f"/api/v1.0/justice-league/superhero/superman"
-        f"/api/v1.0/justice-league/superhero/wonder%20woman"
     )
 
-@app.route("/api/v1.0/justice-league/<super_name>")
-def justice_league_character(super_name):
-    """Fetch the Justice League character whose super hero name matches
+
+@app.route("/api/v1.0/justice-league/real_name/<real_name>")
+def justice_league_by_real_name(real_name):
+    """Fetch the Justice League character whose real_name matches
        the path variable supplied by the user, or a 404 if not."""
 
-    canonicalized = super_name.replace(" ", "").lower()
+    canonicalized = real_name.replace(" ", "").lower()
+    for character in justice_league_members:
+        search_term = character["real_name"].replace(" ", "").lower()
+
+        if search_term == canonicalized:
+            return jsonify(character)
+
+    return jsonify({"error": f"Character with real_name {real_name} not found."}), 404
+
+
+@app.route("/api/v1.0/justice-league/superhero/<superhero>")
+def justice_league_by_superhero__name(superhero):
+    """Fetch the Justice League character whose superhero matches
+       the path variable supplied by the user, or a 404 if not."""
+
+    canonicalized = superhero.replace(" ", "").lower()
     for character in justice_league_members:
         search_term = character["superhero"].replace(" ", "").lower()
 
         if search_term == canonicalized:
             return jsonify(character)
 
-    # return jsonify({"error": f"Character with superhero {super_name} not found."}), 404
+    return jsonify({"error": "Character not found."}), 404
 
 
 if __name__ == "__main__":
